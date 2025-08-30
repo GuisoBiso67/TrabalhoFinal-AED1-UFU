@@ -5,7 +5,7 @@
 
 typedef struct profile { // perfis;
     char name[20];
-    int age;
+    char age[3];
 } Profile;
 
 typedef struct Prof_Node{ // descritor dos de séries;
@@ -25,17 +25,20 @@ typedef struct { // nó descritor dos perfis;
     //int quantSeries; // calcular quantas séries diferentes tem?
 } D_profiles;
 
-void createList(D_profiles *li);
+D_profiles* createList();
 int addProfile(D_profiles *li, Profile p);
-int addTVShow(Prof_Node *liP, TVShow s);
+int load_profiles(D_profiles *li, const char *filename);
+//int addTVShow(Prof_Node *liP, TVShow s);
+void trim(char *str);
+void printProfiles(D_profiles *li);
 
 /* FUNÇÕES
- * criar listas;
- * adicionar perfil ao final da lista;
+ * criar listas; OK
+ * adicionar perfil ao final da lista; OK
  * adicionar série ao final do perfil;
  * remover série do perfil;
  * remover perfil;
- * imprimir lista de perfis; // quantidade de perfis também;
+ * imprimir lista de perfis; // quantidade de perfis também; OK
  * imprimir séries do perfil;
  * imprimir tudo? pfv não;
  * liberar lista inteira;

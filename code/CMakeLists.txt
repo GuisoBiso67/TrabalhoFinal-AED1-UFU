@@ -10,4 +10,5 @@ add_executable(code
         perfis.h
         main.c
         series.c
-        series.h)
+        series.h
+        cmake-build-debug/profiles.txt)

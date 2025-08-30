@@ -4,7 +4,7 @@
 #include "series.h"
 
 int main() {
-    D_profiles *profiles = malloc(sizeof(D_profiles));
-    //profiles = malloc(sizeof(D_profiles));
-    createList(profiles);
+    D_profiles *profiles = createList();
+    load_profiles(profiles, "profiles.txt");
+    printProfiles(profiles);
 }

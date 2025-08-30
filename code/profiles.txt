@@ -1,0 +1,10 @@
+Guilherme | 19;
+Gabriela | 19;
+Ana Jéssica | 19;
+Marcio | 53;
+Sara | 50;
+Maria | 25
+Jorge | 40;
+Cleison | 35;
+Lula | 79;
+Bolsonaro | 70;

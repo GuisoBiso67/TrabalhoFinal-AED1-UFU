@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "perfis.h"
 #include "series.h"
 
-/*
-void createList(D_profiles *li) {
+D_profiles* createList() {
+    D_profiles *li = malloc(sizeof(D_profiles));
     li->start = NULL;
     li->end = NULL;
     li->quantProfiles = 0;
+    return li;
 }
 
 int addProfile(D_profiles *li, Profile p){
@@ -17,14 +19,88 @@ int addProfile(D_profiles *li, Profile p){
     if (newProfile == NULL) return 0; // erro de alocação;
 
     newProfile->info = p;
+    newProfile->start = NULL; // null para lista de séries (que não foi criada ainda)
+    newProfile->end = NULL; // null para lista de séries (que não foi criada ainda)
+    newProfile->quantTVShows = 0;
     if (li->quantProfiles == 0) { // adicionar primeiro perfil
+        newProfile->next = NULL;
+        newProfile->before = NULL;
+
         li->start = newProfile;
         li->end = newProfile;
         li->quantProfiles++;
         return 1;
     }
-    li->end = newProfile;
-    li->quantProfiles++;
+    newProfile->before = li->end; // before do novo nó é o fim
+    newProfile->next = NULL; // next do novo nó é nul
+    li->end->next = newProfile; // next do fim é o novo nó
+    li->end = newProfile; // novo fim é o novo nó
+    li->quantProfiles++; // incrementa quantidade de perfis
     return 1;
 }
-*/
+
+int load_profiles(D_profiles *li, const char *filename) {
+    if (li == NULL) return 0;
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo");
+        return 0;
+    }
+
+    Profile p;
+    char linha[200];
+    while (fgets(linha, sizeof(linha), file)) {
+        linha[strcspn(linha, "\n")] = '\0';
+
+        strcpy(p.name, strtok(linha, "|"));
+        //p.age = atoi(strtok(NULL, ";")); // tentativa que ficava dando warning
+        strcpy(p.age, strtok(NULL, ";"));
+        trim(p.name);
+        trim(p.age);
+        addProfile(li, p);
+    }
+    fclose(file);
+    return 1;
+}
+
+void printProfiles(D_profiles *li) {
+    if (li == NULL) {
+        printf("Lista Vazia!\n");
+        return;
+    }
+    printf("\n----- PERFIS ------\n\n");
+    Prof_Node *aux = li->start;
+    while (aux != NULL) {
+        printf("%s | Idade: %s | Series Assistidas: %d\n", aux->info.name, aux->info.age, aux->quantTVShows);
+        aux = aux->next;
+    }
+    printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles);
+    printf("\n-----------------------\n");}
+
+
+// FUNÇÃO QUE NAO TEM QUE MEXER
+void trim(char *str) {
+    char *start, *end;
+    // Encontrar o primeiro caractere que não é espaço em branco
+    start = str;
+    while (*start && isspace((unsigned char)*start)) {
+        start++;
+    }
+    // Se a string estiver vazia, retorna
+    if (*start == 0) {
+        *str = '\0';
+        return;
+    }
+    // Encontrar o último caractere que não é espaço
+    end = start + strlen(start) - 1;
+    while (end > start && isspace((unsigned char)*end)) {
+        end--;
+    }
+    // Adiciona o caractere nulo após o último caractere que não é espaço
+    *(end + 1) = '\0';
+    // Mover a string para o início da posição de memória original
+    if (start != str) {
+        memmove(str, start, end - start + 2);
+    }
+}
+
