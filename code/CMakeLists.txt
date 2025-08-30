@@ -6,6 +6,8 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(code
-        f-series.c
-        f-series.h
-        main.c)
+        perfis.c
+        perfis.h
+        main.c
+        series.c
+        series.h)
