@@ -11,4 +11,12 @@ add_executable(code
         main.c
         series.c
         series.h
-        cmake-build-debug/profiles.txt)
+        cmake-build-debug/archives/profiles.txt
+        cmake-build-debug/archives/s1.txt
+        cmake-build-debug/archives/s2.txt
+        cmake-build-debug/archives/s3.txt
+        cmake-build-debug/archives/s4.txt
+        cmake-build-debug/archives/s5.txt
+        cmake-build-debug/archives/s6.txt
+        cmake-build-debug/archives/s7.txt
+        cmake-build-debug/archives/s8.txt)

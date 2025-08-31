@@ -13,8 +13,8 @@ typedef struct Prof_Node{ // descritor dos de séries;
     TVS_Node *start; // acessa a lista de séries;
     TVS_Node *end;
 
-    struct Prof_Node *next;
-    struct Prof_Node *before;
+    Prof_Node *next;
+    Prof_Node *before;
     int quantTVShows;
 } Prof_Node;
 
@@ -29,21 +29,20 @@ D_profiles* createList();
 int addProfile(D_profiles *li, Profile p);
 int load_profiles(D_profiles *li, const char *filename);
 //int addTVShow(Prof_Node *liP, TVShow s);
-void trim(char *str);
 void printProfiles(D_profiles *li);
+int removeProfile(D_profiles *li, const char *name);
+
+
+void trim(char *str);
 
 /* FUNÇÕES
  * criar listas; OK
- * adicionar perfil ao final da lista; OK
- * adicionar série ao final do perfil;
- * remover série do perfil;
- * remover perfil;
+ * adicionar perfil ao final da lista; OK *
+ * remover perfil; OK
  * imprimir lista de perfis; // quantidade de perfis também; OK
- * imprimir séries do perfil;
- * imprimir tudo? pfv não;
+ * imprimir tudo? pfv não; ???
  * liberar lista inteira;
  *
- * favoritar item;
  * procurar série em determinado perfil;
  * procurar perfil;
  * alterar informações do perfil;

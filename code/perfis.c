@@ -75,7 +75,40 @@ void printProfiles(D_profiles *li) {
         aux = aux->next;
     }
     printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles);
-    printf("\n-----------------------\n");}
+    printf("\n-----------------------\n");
+}
+
+int removeProfile(D_profiles *li, const char *name) {
+    if (li == NULL) return 0;
+    Prof_Node *aux = li->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            break;
+        }
+        aux = aux->next;
+    }
+    if (aux == NULL) return -1; // perfil não existe;
+    if (aux == li->start) { // perfil a ser removido é o primeiro
+        li->start = aux->next;
+        li->start->before = NULL;
+        li->quantProfiles--;
+        free(aux);
+        return 1;
+    }
+    if (aux == li->end) { // perfil a ser removido é o último
+        li->end = aux->before;
+        li->end->next = NULL;
+        li->quantProfiles--;
+        free(aux);
+        return 1;
+    }
+    // perfil a ser removido é algum do meio
+    aux->next->before = aux->before;
+    aux->before->next = aux->next;
+    li->quantProfiles--;
+    free(aux);
+    return 1;
+}
 
 
 // FUNÇÃO QUE NAO TEM QUE MEXER
