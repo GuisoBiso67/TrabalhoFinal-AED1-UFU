@@ -1,0 +1,10 @@
+Schitt’s Creek | CBC/Pop | Eugene & Dan Levy | Comedy | 6 | 80 | 2015 | 8.5 | 7 | YES;
+Peep Show | Channel 4 | Sam Bain & Jesse Armstrong | Comedy | 9 | 54 | 2003 | 8.5 | 7 | NO;
+La Casa de Papel | Antena 3/Netflix | Álex Pina | Crime/Thriller | 5 | 82 | 2017 | 8.2 | 7 | YES;
+Avatar: The Last Airbender | Nickelodeon | Michael Dante DiMartino & Bryan Konietzko | Animated/Fantasy | 3 | 61 | 2005 | 9.2 | 9 | YES;
+Cheers | NBC | James Burrows | Comedy | 11 | 275 | 1982 | 7.9 | 6 | NO;
+Rick and Morty | Adult Swim | Justin Roiland & Dan Harmon | Animated/Comedy/Sci-fi | 6 | 70 | 2013 | 9.2 | 8 | YES;
+Futurama | Fox/Comedy Central/Hulu | Matt Groening | Animated/Comedy | 7 | 140 | 1999 | 8.3 | 7 | NO;
+Stranger Things | Netflix | The Duffer Brothers | Sci-fi/Horror | 4 | 34 | 2016 | 8.7 | 8 | YES;
+The X-Files | Fox | Chris Carter | Sci-fi/Crime | 11 | 218 | 1993 | 8.6 | 7 | NO;
+Doctor Who | BBC | Steven Moffat & others | Sci-fi | 13 | 175 | 2005 | 8.6 | 6 | YES;

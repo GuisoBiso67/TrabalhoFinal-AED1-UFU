@@ -1,0 +1,10 @@
+BoJack Horseman | Netflix | Raphael Bob-Waksberg | Animated/Comedy-Drama | 6 | 77 | 2014 | 8.7 | 8 | NO;
+Six Feet Under | HBO | Alan Ball | Drama | 5 | 63 | 2001 | 8.7 | 7 | NO;
+Twin Peaks: The Return | Showtime/BBC | Mark Frost & David Lynch | Mystery/Drama | 1 | 18 | 2017 | 8.5 | 6 | YES;
+Atlanta | FX | Donald Glover | Comedy/Drama | 4 | 41 | 2016 | 8.6 | 8 | NO;
+Chernobyl | HBO | Craig Mazin | Historical/Drama | 1 | 5 | 2019 | 9.4 | 9 | YES;
+The Crown | Netflix | Peter Morgan | Historical/Drama | 6 | 60 | 2016 | 8.7 | 7 | NO;
+30 Rock | NBC | Tina Fey | Comedy | 7 | 138 | 2006 | 8.2 | 7 | YES;
+Deadwood | HBO | David Milch | Western/Drama | 3 | 36 | 2004 | 8.6 | 8 | NO;
+Lost | ABC | J.J. Abrams | Adventure/Mystery | 6 | 121 | 2004 | 8.3 | 7 | YES;
+The Thick of It | BBC Four/BBC Two | Armando Iannucci | Political Satire | 4 | 23 | 2005 | 8.5 | 6 | NO;

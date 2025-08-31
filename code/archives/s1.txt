@@ -1,0 +1,10 @@
+The Wire | HBO | David Simon | Drama/Crime | 5 | 60 | 2002 | 9.3 | 8 | YES;
+Mad Men | AMC | Matthew Weiner | Drama | 7 | 92 | 2007 | 8.6 | 7 | NO;
+Breaking Bad | AMC | Vince Gilligan | Drama/Crime | 5 | 62 | 2008 | 9.5 | 9 | YES;
+Fleabag | BBC Three/BBC One | Phoebe Waller-Bridge | Comedy/Drama | 2 | 12 | 2016 | 8.7 | 8 | NO;
+Game of Thrones | HBO | David Benioff & D.B. Weiss | Fantasy/Drama | 8 | 73 | 2011 | 9.2 | 6 | YES;
+I May Destroy You | BBC One | Michaela Coel | Drama | 1 | 12 | 2020 | 8.4 | 7 | NO;
+The Leftovers | HBO | Damon Lindelof | Drama/Sci-fi | 3 | 28 | 2014 | 8.7 | 8 | YES;
+The Americans | FX | Joe Weisberg | Espionage/Drama | 6 | 75 | 2013 | 8.4 | 8 | NO;
+The Office (UK) | BBC Two/BBC One | Ricky Gervais & Stephen Merchant | Comedy | 2 | 12 | 2001 | 8.5 | 7 | YES;
+Succession | HBO | Jesse Armstrong | Drama | 4 | 40 | 2018 | 8.8 | 9 | YES;

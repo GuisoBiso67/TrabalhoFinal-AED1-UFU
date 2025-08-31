@@ -1,0 +1,8 @@
+True Detective | HBO | Nic Pizzolatto | Crime/Anthology | 3 | 24 | 2014 | 8.9 | 7 | YES;
+Arrested Development | Fox/Netflix | Mitchell Hurwitz | Comedy | 5 | 84 | 2003 | 8.7 | 7 | NO;
+The Good Wife | CBS | Robert King & Michelle King | Legal/Drama | 7 | 156 | 2009 | 8.3 | 7 | YES;
+Fargo | FX | Noah Hawley | Crime/Anthology | 5 | 50 | 2014 | 8.9 | 8 | YES;
+Downton Abbey | ITV/PBS | Julian Fellowes | Historical/Drama | 6 | 58 | 2010 | 8.7 | 7 | NO;
+Band of Brothers | HBO | Steven Spielberg & Tom Hanks | War/Drama | 1 | 10 | 2001 | 9.4 | 9 | YES;
+The Handmaid’s Tale | Hulu | Bruce Miller | Dystopian/Drama | 5 | 50 | 2017 | 8.4 | 6 | NO;
+The Office (US) | NBC | Greg Daniels | Comedy | 9 | 201 | 2005 | 8.9 | 8 | YES;

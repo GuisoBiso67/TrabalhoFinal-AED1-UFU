@@ -1,0 +1,7 @@
+The Newsroom | HBO | Aaron Sorkin | Drama | 3 | 25 | 2012 | 8.6 | 7 | NO;
+Archer | FX | Adam Reed | Animated/Comedy | 13 | 130 | 2009 | 8.6 | 7 | YES;
+Boardwalk Empire | HBO | Terence Winter | Crime/Drama | 5 | 56 | 2010 | 8.5 | 8 | NO;
+House M.D. | Fox | David Shore | Medical/Drama | 8 | 177 | 2004 | 8.7 | 7 | YES;
+Westworld | HBO | Jonathan Nolan & Lisa Joy | Sci-fi/Western | 4 | 37 | 2016 | 8.6 | 8 | NO;
+Peaky Blinders | BBC | Steven Knight | Crime/Drama | 6 | 36 | 2013 | 8.8 | 8 | YES;
+House of the Dragon | HBO | Ryan Condal & Miguel Sapochnik | Fantasy/Drama | 2 | 18 | 2022 | 8.6 | 8 | NO;

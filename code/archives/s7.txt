@@ -1,0 +1,10 @@
+Orange Is the New Black | Netflix | Jenji Kohan | Drama/Comedy | 7 | 91 | 2013 | 8.0 | 7 | NO;
+Mindhunter | Netflix | Joe Penhall | Crime/Drama | 2 | 19 | 2017 | 8.6 | 8 | YES;
+Hannibal | NBC | Bryan Fuller | Crime/Psychological | 3 | 39 | 2013 | 8.5 | 7 | NO;
+Daredevil | Netflix | Drew Goddard | Superhero/Drama | 3 | 39 | 2015 | 8.6 | 8 | YES;
+The Good Place | NBC | Michael Schur | Comedy/Fantasy | 4 | 53 | 2016 | 8.2 | 8 | NO;
+The Expanse | Syfy/Amazon | Mark Fergus & Hawk Ostby | Sci-fi | 6 | 62 | 2015 | 8.5 | 8 | YES;
+Broadchurch | ITV/Netflix | Chris Chibnall | Crime/Drama | 3 | 24 | 2013 | 8.4 | 7 | NO;
+Narcos | Netflix | Chris Brancato et al. | Crime/Drama | 3 | 30 | 2015 | 8.8 | 8 | YES;
+House of Cards | Netflix | Beau Willimon | Political/Drama | 6 | 73 | 2013 | 8.7 | 6 | NO;
+The Boys | Amazon Prime Video | Eric Kripke | Superhero/Drama | 4 | 32 | 2019 | 8.7 | 8 | YES;

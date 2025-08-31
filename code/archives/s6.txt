@@ -1,0 +1,10 @@
+How I Met Your Mother | CBS | Carter Bays & Craig Thomas | Comedy | 9 | 208 | 2005 | 8.3 | 7 | NO;
+Modern Family | ABC | Christopher Lloyd & Steven Levitan | Comedy | 11 | 250 | 2009 | 8.4 | 8 | YES;
+Homeland | Showtime | Alex Gansa & Howard Gordon | Thriller/Drama | 8 | 96 | 2011 | 8.3 | 7 | NO;
+Dexter | Showtime | James Manos Jr. | Crime/Drama | 8 | 96 | 2006 | 8.6 | 7 | YES;
+Ozark | Netflix | Bill Dubuque & Mark Williams | Crime/Drama | 4 | 44 | 2017 | 8.5 | 8 | NO;
+The Mandalorian | Disney+ | Jon Favreau | Sci-fi/Action | 3 | 25 | 2019 | 8.8 | 8 | YES;
+The Simpsons | Fox | Matt Groening | Animated/Comedy | 30 | 700 | 1989 | 8.7 | 6 | NO;
+Brooklyn Nine-Nine | NBC/Fox/Peacock | Michael Schur & Dan Goor | Comedy | 8 | 153 | 2013 | 8.4 | 7 | YES;
+Star Trek: The Next Generation | Syndication | Gene Roddenberry | Sci-fi | 7 | 178 | 1987 | 8.6 | 8 | NO;
+Seinfeld | NBC | Larry David & Jerry Seinfeld | Comedy | 9 | 180 | 1990 | 8.8 | 8 | YES;
