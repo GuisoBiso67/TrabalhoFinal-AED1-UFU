@@ -26,19 +26,21 @@ typedef struct TVS_Node{
 
 int loadTVShows(Prof_Node *pn, const char *filename);
 int addTVShow(Prof_Node *pn, TVShow tvs);
-void printTVShows(Prof_Node *pn);
+void printTVShows(Prof_Node *pn, TVS_Node *item);
 int removeTVShow(Prof_Node *pn, const char *name);
+TVS_Node* searchTVShow(Prof_Node *pn, const char *name);
+void printFavorites(Prof_Node *pn);
 
 /* FUNÇÕES
  * adicionar série ao final do perfil; OK
  * remover série do perfil; OK
  * imprimir séries do perfil; OK
- * imprimir tudo? pfv não; ???
  * liberar lista inteira;
  *
  * favoritar item;
- * procurar série em determinado perfil; // fazer a busca de série aqui;
- * imprimir favoritos;
+ * remover um favorito;
+ * procurar série em determinado perfil; OK
+ * imprimir favoritos; OK
 */
 
 #endif //SERIES_H

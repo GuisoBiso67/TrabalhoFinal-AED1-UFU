@@ -13,6 +13,7 @@ int main() {
     char arquiveNameAux[20]; // string auxiliar para nome de arquivos;
     Prof_Node* pnAux; // nó de perfis auxiliar;
     char nameTVAux[50];
+    TVS_Node *tvsAux;
 
     int op, op2;
 
@@ -31,6 +32,7 @@ int main() {
                 printf("Nome: ");
                 scanf("%[^\n]", p.name);
                 getchar();
+                trim(p.name);
                 printf("Idade: ");
                 scanf("%[^\n]", p.age);
                 addProfile(profiles, p);
@@ -46,6 +48,7 @@ int main() {
             case 3:
                 printf("Nome do Perfil: ");
                 scanf("%[^\n]", nameAux);
+                trim(nameAux);
                 const int ver2 = removeProfile(profiles, nameAux);
                 if (ver2 == 1) {
                     printf("Perfil removido com sucesso!\n");
@@ -58,6 +61,7 @@ int main() {
             case 4:
                 printf("Perfil a ser modificado: ");
                 scanf("%[^\n]", nameAux); // função para encontrar perfil
+                trim(nameAux);
                 pnAux = searchProfile(profiles, nameAux);
                 if (pnAux == NULL) {
                     printf("Perfil nao cadastrado.\n");
@@ -70,6 +74,7 @@ int main() {
                     printf("3- Remover Serie\n");
                     printf("4- Imprimir Lista de Series\n");
                     printf("5- Imprimir Favoritos\n");
+                    printf("6- Procurar Serie\n");
                     printf("0- Sair do Perfil\n");
                     scanf("%d", &op2);
                     getchar();
@@ -81,9 +86,9 @@ int main() {
                             scanf("%[^\n]", arquiveNameAux);
                             const int ver3 = loadTVShows(pnAux, arquiveNameAux); // fazer função para encontrar perfil;
                             if (ver3 == 1) {
-                                printf("Series adicionadas com sucesso!");
+                                printf("Series adicionadas com sucesso!\n");
                             }else {
-                                printf("Erro ao ler o arquivo. Tente Novamente.");
+                                printf("Erro ao ler o arquivo. Tente Novamente.\n");
                             }
                             break;
                         case 3:
@@ -95,16 +100,24 @@ int main() {
                             }else if (ver4 == -1) {
                                 printf("Serie nao encontrada.\n");
                             }else {
-                                printf("Perfil Vazia!");
+                                printf("Perfil Vazia!\n");
                             }
                             break;
                         case 4:
-                            printTVShows(pnAux);
+                            printTVShows(pnAux, NULL);
                             break;
                         case 5:
-                            printf("Funcao nao foi feita. Aguarde");
+                            printFavorites(pnAux);
                             break;
                         case 6:
+                            printf("Nome da Serie: ");
+                            scanf("%[^\n]", nameTVAux);
+                            tvsAux = searchTVShow(pnAux, nameTVAux);
+                            if (tvsAux == NULL) {
+                                printf("Serie nao foi encontrada ou sua lista esta vazia. Tente Novamente\n");
+                                break;
+                            }
+                            printTVShows(pnAux, tvsAux);
                             break;
                         case 0:
                             printf("Saindo do perfil...\n");

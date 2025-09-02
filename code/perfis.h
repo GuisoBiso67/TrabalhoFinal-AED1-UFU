@@ -41,10 +41,9 @@ void trim(char *str);
  * adicionar perfil ao final da lista; OK
  * remover perfil; OK
  * imprimir lista de perfis; // quantidade de perfis também; OK
- * imprimir tudo? pfv não; ???
  * liberar lista inteira;
  *
- * procurar série em determinado perfil;
+ * procurar série em determinado perfil OK;
  * procurar perfil;
  * alterar informações do perfil;
 */

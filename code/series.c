@@ -58,15 +58,12 @@ int loadTVShows(Prof_Node *pn, const char *filename) {
         char *temp = strtok(NULL, ";");
         trim(temp);
         t.favorite = temp[0];
-        //t.favorite = trim(strtok(NULL, ";"));
-        //strcpy(t.favorite, strtok(NULL, ";"));
 
         trim(t.name);
         trim(t.broadcaster);
         trim(t.creator);
         trim(t.genre);
         trim(t.ratingIMDB);
-        //trim(t.favorite);
 
         addTVShow(pn, t);
     }
@@ -74,7 +71,7 @@ int loadTVShows(Prof_Node *pn, const char *filename) {
     return 1;
 }
 
-void printTVShows(Prof_Node *pn) {
+void printTVShows(Prof_Node *pn, TVS_Node *item) {
     if (pn == NULL) {
         printf("Lista vazia!");
         return;
@@ -84,8 +81,11 @@ void printTVShows(Prof_Node *pn) {
         return;
     }
 
-    printf("Series de %s:\n",pn->info.name);
-    TVS_Node *aux = pn->start;
+
+    TVS_Node *aux = (item != NULL) ? item : pn->start; // se é true, imprime só um item (para a função search), se não, imprime lista completa
+    if (item == NULL) { // imprime titulo só se for lista completa;
+        printf("\nSeries de %s:\n",pn->info.name);
+    }
     while (aux != NULL) {
         //if (aux->info.favorite == 'Y')
         if (aux->info.favorite == 'Y' || aux->info.favorite == 'y') {
@@ -97,9 +97,25 @@ void printTVShows(Prof_Node *pn) {
         printf("No de Temporadas: %d | No de Episodios: %d\n",aux->info.seasons, aux->info.episodes);
         printf("Categoria: %s\n",aux->info.genre);
         printf("Nota IMDB: %s | Nota Pessoal: %d\n",aux->info.ratingIMDB, aux->info.personalRating);
-        printf("------------------------------------\n\n");
+        printf("------------------------------------\n");
+        if (item != NULL) break;  // só um item
         aux = aux->next;
     }
+}
+
+void printFavorites(Prof_Node *pn) {
+    if (pn == NULL) return;
+    int cont = 0;
+    TVS_Node *aux = pn->start;
+    printf("--- Series Favoritas de %s---\n",pn->info.name);
+    while (aux != NULL) {
+        if (aux->info.favorite == 'Y' || aux->info.favorite == 'y') {
+            printTVShows(pn, aux);
+            cont++;
+        }
+        aux = aux->next;
+    }
+    printf("\nSeries Favoritas: %d\n",cont);
 }
 
 int removeTVShow(Prof_Node *pn, const char *name) {
@@ -110,6 +126,7 @@ int removeTVShow(Prof_Node *pn, const char *name) {
         if (strcmp(aux->info.name, name) == 0) {
             break;
         }
+        aux = aux->next;
     }
     if (aux == NULL) return -1; // serie nao esta no perfil;
 
@@ -120,19 +137,32 @@ int removeTVShow(Prof_Node *pn, const char *name) {
         free(aux);
         return 1;
     }
-    if (aux == pn->end) { // série é a ultima na lista
+    if (aux == pn->end) { // série é a última na lista
         pn->end = aux->before;
         pn->end->next = NULL;
         pn->quantTVShows--;
         free(aux);
         return 1;
     }
-    // série é esta no meio na lista
+    // série está no meio na lista
     aux->next->before = aux->before;
     aux->before->next = aux->next;
     pn->quantTVShows--;
     free(aux);
     return 1;
+}
+
+TVS_Node* searchTVShow(Prof_Node *pn, const char *name) {
+    if (pn == NULL) return NULL;
+    TVS_Node *aux = pn->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            break;
+        }
+        aux = aux->next;
+    }
+    if (aux == NULL) return NULL;
+    return aux; // retorna o nó
 }
 
 
