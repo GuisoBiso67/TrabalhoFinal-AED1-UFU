@@ -110,6 +110,19 @@ int removeProfile(D_profiles *li, const char *name) {
     return 1;
 }
 
+Prof_Node* searchProfile(D_profiles *li, const char *name) {
+    if (li == NULL) return NULL;
+    Prof_Node *aux = li->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            break;
+        }
+        aux = aux->next;
+    }
+    if (aux == NULL) return NULL;
+    return aux;
+}
+
 
 // FUNÇÃO QUE NAO TEM QUE MEXER
 void trim(char *str) {

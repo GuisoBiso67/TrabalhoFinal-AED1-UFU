@@ -31,13 +31,14 @@ int load_profiles(D_profiles *li, const char *filename);
 //int addTVShow(Prof_Node *liP, TVShow s);
 void printProfiles(D_profiles *li);
 int removeProfile(D_profiles *li, const char *name);
+Prof_Node* searchProfile(D_profiles *li, const char *name);
 
 
 void trim(char *str);
 
 /* FUNÇÕES
  * criar listas; OK
- * adicionar perfil ao final da lista; OK *
+ * adicionar perfil ao final da lista; OK
  * remover perfil; OK
  * imprimir lista de perfis; // quantidade de perfis também; OK
  * imprimir tudo? pfv não; ???

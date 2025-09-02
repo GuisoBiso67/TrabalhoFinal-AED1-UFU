@@ -29,9 +29,14 @@ int addTVShow(Prof_Node *pn, TVShow tvs) {
 
 int loadTVShows(Prof_Node *pn, const char *filename) {
     if (pn == NULL) return 0;
-    FILE* file = fopen(filename, "r");
+
+    char str1[11];
+    strcpy(str1, "archives/"); // melhorar isso depois
+    strcat(str1,filename);
+
+    FILE* file = fopen(str1, "r");
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo");
+        //printf("Erro ao abrir o arquivo");
         return 0;
     }
 
@@ -74,6 +79,10 @@ void printTVShows(Prof_Node *pn) {
         printf("Lista vazia!");
         return;
     }
+    if (pn->quantTVShows == 0) {
+        printf("Nenhuma serie foi adicionada ainda.\n");
+        return;
+    }
 
     printf("Series de %s:\n",pn->info.name);
     TVS_Node *aux = pn->start;
@@ -91,6 +100,39 @@ void printTVShows(Prof_Node *pn) {
         printf("------------------------------------\n\n");
         aux = aux->next;
     }
+}
+
+int removeTVShow(Prof_Node *pn, const char *name) {
+    if (pn == NULL) return 0;
+
+    TVS_Node *aux = pn->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            break;
+        }
+    }
+    if (aux == NULL) return -1; // serie nao esta no perfil;
+
+    if (aux == pn->start) { // série é a primeira na lista
+        pn->start = aux->next;
+        pn->start->before = NULL;
+        pn->quantTVShows--;
+        free(aux);
+        return 1;
+    }
+    if (aux == pn->end) { // série é a ultima na lista
+        pn->end = aux->before;
+        pn->end->next = NULL;
+        pn->quantTVShows--;
+        free(aux);
+        return 1;
+    }
+    // série é esta no meio na lista
+    aux->next->before = aux->before;
+    aux->before->next = aux->next;
+    pn->quantTVShows--;
+    free(aux);
+    return 1;
 }
 
 
