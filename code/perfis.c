@@ -63,18 +63,19 @@ int load_profiles(D_profiles *li, const char *filename) {
     return 1;
 }
 
-void printProfiles(D_profiles *li) {
+void printProfiles(D_profiles *li, Prof_Node *item) {
     if (li == NULL) {
         printf("Lista Vazia!\n");
         return;
     }
-    printf("\n----- PERFIS ------\n\n");
-    Prof_Node *aux = li->start;
+    Prof_Node *aux = (item != NULL) ? item : li->start;
+    if (item == NULL) printf("\n----- PERFIS ------\n\n");
     while (aux != NULL) {
         printf("%s | Idade: %s | Series Assistidas: %d\n", aux->info.name, aux->info.age, aux->quantTVShows);
+        if (item != NULL) break;
         aux = aux->next;
     }
-    printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles);
+    if (item == NULL) printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles);
     printf("\n-----------------------\n");
 }
 
@@ -121,6 +122,26 @@ Prof_Node* searchProfile(D_profiles *li, const char *name) {
     }
     if (aux == NULL) return NULL;
     return aux;
+}
+
+void freeProfiles(Prof_Node* pn) {
+    if (pn != NULL) {
+        Prof_Node *aux;
+        while (pn != NULL) {
+            aux = pn;
+            pn = pn->next;
+            freeShows(aux->start); // libera lista dos perfis;
+            free(aux);
+        }
+        //free(pn);
+    }
+}
+
+void freeList(D_profiles* dp) {
+    if (dp != NULL) {
+        freeProfiles(dp->start);
+    }
+    free(dp);
 }
 
 

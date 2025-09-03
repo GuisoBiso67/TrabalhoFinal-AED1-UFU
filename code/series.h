@@ -30,12 +30,13 @@ void printTVShows(Prof_Node *pn, TVS_Node *item);
 int removeTVShow(Prof_Node *pn, const char *name);
 TVS_Node* searchTVShow(Prof_Node *pn, const char *name);
 void printFavorites(Prof_Node *pn);
+void freeShows(TVS_Node *l);
 
 /* FUNÇÕES
  * adicionar série ao final do perfil; OK
  * remover série do perfil; OK
  * imprimir séries do perfil; OK
- * liberar lista inteira;
+ * liberar lista inteira; OK
  *
  * favoritar item;
  * remover um favorito;

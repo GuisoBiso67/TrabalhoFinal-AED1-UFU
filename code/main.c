@@ -13,7 +13,8 @@ int main() {
     char arquiveNameAux[20]; // string auxiliar para nome de arquivos;
     Prof_Node* pnAux; // nó de perfis auxiliar;
     char nameTVAux[50];
-    TVS_Node *tvsAux;
+    TVS_Node* tvsAux;
+    TVShow tvsAuxStr; // struct auxiliar para dados de séries;
 
     int op, op2;
 
@@ -24,17 +25,18 @@ int main() {
         printf("3- Remover Perfil\n");
         printf("4- Modificar Perfil\n"); // opção para adicionar as séries;
         printf("5- Imprimir Perfis\n");
+        printf("6- Procurar Perfil\n");
         printf("0- Sair\n");
         scanf("%d", &op);
-        getchar();
+        //getchar();
         switch (op) {
             case 1:
                 printf("Nome: ");
-                scanf("%[^\n]", p.name);
+                scanf(" %[^\n]", p.name);
                 getchar();
                 trim(p.name);
                 printf("Idade: ");
-                scanf("%[^\n]", p.age);
+                scanf(" %[^\n]", p.age);
                 addProfile(profiles, p);
                 break;
             case 2:
@@ -47,7 +49,7 @@ int main() {
                 break;
             case 3:
                 printf("Nome do Perfil: ");
-                scanf("%[^\n]", nameAux);
+                scanf(" %[^\n]", nameAux);
                 trim(nameAux);
                 const int ver2 = removeProfile(profiles, nameAux);
                 if (ver2 == 1) {
@@ -60,9 +62,9 @@ int main() {
                 break;
             case 4:
                 printf("Perfil a ser modificado: ");
-                scanf("%[^\n]", nameAux); // função para encontrar perfil
+                scanf(" %[^\n]", nameAux); // função para encontrar perfil
                 trim(nameAux);
-                pnAux = searchProfile(profiles, nameAux);
+                pnAux = searchProfile(profiles, nameAux); // pnAux recebe o nó com as informações do perfil para ser alterado;
                 if (pnAux == NULL) {
                     printf("Perfil nao cadastrado.\n");
                     break;
@@ -77,13 +79,34 @@ int main() {
                     printf("6- Procurar Serie\n");
                     printf("0- Sair do Perfil\n");
                     scanf("%d", &op2);
-                    getchar();
+                    //getchar();
                     switch (op2) {
                         case 1:
+                            printf("Nome: ");
+                            scanf(" %[^\n]", tvsAuxStr.name);
+                            printf("Emissora/Streaming: ");
+                            scanf(" %[^\n]", tvsAuxStr.broadcaster);
+                            printf("Nome do Criador: ");
+                            scanf(" %[^\n]", tvsAuxStr.creator);
+                            printf("Genero (mais de 1, use /): ");
+                            scanf(" %[^\n]", tvsAuxStr.genre);
+                            printf("No de Temporadas: ");
+                            scanf("%d", &tvsAuxStr.seasons);
+                            printf("No de Episodios: ");
+                            scanf("%d", &tvsAuxStr.episodes);
+                            printf("Ano de Inicio: ");
+                            scanf("%d", &tvsAuxStr.year);
+                            printf("Nota no IMDB: ");
+                            scanf(" %[^\n]", tvsAuxStr.ratingIMDB);
+                            printf("Nota Pessoal: ");
+                            scanf("%d", &tvsAuxStr.personalRating);
+                            printf("Eh uma de suas series favoritas?(y/n): ");
+                            scanf(" %c", &tvsAuxStr.favorite);
+                            addTVShow(pnAux, tvsAuxStr);
                             break;
                         case 2:
                             printf("Selecione um arquivo (s1.txt, s_.txt, ...): ");
-                            scanf("%[^\n]", arquiveNameAux);
+                            scanf(" %[^\n]", arquiveNameAux);
                             const int ver3 = loadTVShows(pnAux, arquiveNameAux); // fazer função para encontrar perfil;
                             if (ver3 == 1) {
                                 printf("Series adicionadas com sucesso!\n");
@@ -93,7 +116,7 @@ int main() {
                             break;
                         case 3:
                             printf("Nome da Serie: ");
-                            scanf("%[^\n]", nameTVAux);
+                            scanf(" %[^\n]", nameTVAux);
                             const int ver4 = removeTVShow(pnAux, nameTVAux);
                             if (ver4 == 1) {
                                 printf("Serie foi removida do perfil!\n");
@@ -111,13 +134,13 @@ int main() {
                             break;
                         case 6:
                             printf("Nome da Serie: ");
-                            scanf("%[^\n]", nameTVAux);
+                            scanf(" %[^\n]", nameTVAux);
                             tvsAux = searchTVShow(pnAux, nameTVAux);
-                            if (tvsAux == NULL) {
-                                printf("Serie nao foi encontrada ou sua lista esta vazia. Tente Novamente\n");
-                                break;
+                            if (tvsAux == NULL) printf("Serie nao foi encontrada. Tente Novamente.\n");
+                            else {
+                                printf("\nSerie encontrada:\n");
+                                printTVShows(pnAux, tvsAux);
                             }
-                            printTVShows(pnAux, tvsAux);
                             break;
                         case 0:
                             printf("Saindo do perfil...\n");
@@ -129,7 +152,17 @@ int main() {
                 }while (op2!=0);
                 break;
             case 5:
-                printProfiles(profiles);
+                printProfiles(profiles, NULL);
+                break;
+            case 6:
+                printf("Nome: ");
+                scanf(" %[^\n]", nameAux);
+                pnAux = searchProfile(profiles,nameAux);
+                if (pnAux == NULL) printf("Perfil nao encontrado.\n");
+                else {
+                    printf("\nPerfil encontrado:\n");
+                    printProfiles(profiles, pnAux);
+                }
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -139,4 +172,6 @@ int main() {
                 break;
         }
     }while (op!=0);
+
+    freeList(profiles);
 }

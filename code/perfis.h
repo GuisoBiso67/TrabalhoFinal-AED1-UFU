@@ -29,10 +29,11 @@ D_profiles* createList();
 int addProfile(D_profiles *li, Profile p);
 int load_profiles(D_profiles *li, const char *filename);
 //int addTVShow(Prof_Node *liP, TVShow s);
-void printProfiles(D_profiles *li);
+void printProfiles(D_profiles *li, Prof_Node *p);
 int removeProfile(D_profiles *li, const char *name);
 Prof_Node* searchProfile(D_profiles *li, const char *name);
-
+void freeProfiles(Prof_Node* pn);
+void freeList(D_profiles* dp);
 
 void trim(char *str);
 
@@ -41,10 +42,10 @@ void trim(char *str);
  * adicionar perfil ao final da lista; OK
  * remover perfil; OK
  * imprimir lista de perfis; // quantidade de perfis também; OK
- * liberar lista inteira;
+ * liberar lista inteira; OK
  *
  * procurar série em determinado perfil OK;
- * procurar perfil;
+ * procurar perfil; OK
  * alterar informações do perfil;
 */
 

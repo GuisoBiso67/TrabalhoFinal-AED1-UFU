@@ -81,7 +81,6 @@ void printTVShows(Prof_Node *pn, TVS_Node *item) {
         return;
     }
 
-
     TVS_Node *aux = (item != NULL) ? item : pn->start; // se é true, imprime só um item (para a função search), se não, imprime lista completa
     if (item == NULL) { // imprime titulo só se for lista completa;
         printf("\nSeries de %s:\n",pn->info.name);
@@ -101,6 +100,7 @@ void printTVShows(Prof_Node *pn, TVS_Node *item) {
         if (item != NULL) break;  // só um item
         aux = aux->next;
     }
+    if (item == NULL) printf("\nSeries Assistidas: %d\n", pn->quantTVShows);
 }
 
 void printFavorites(Prof_Node *pn) {
@@ -163,6 +163,18 @@ TVS_Node* searchTVShow(Prof_Node *pn, const char *name) {
     }
     if (aux == NULL) return NULL;
     return aux; // retorna o nó
+}
+
+void freeShows(TVS_Node *l) { // libera lista de séries
+    if (l != NULL) {
+        TVS_Node *aux;
+        while (l != NULL) {
+            aux = l;
+            l = l->next;
+            free(aux);
+        }
+        //free(l);
+    }
 }
 
 
