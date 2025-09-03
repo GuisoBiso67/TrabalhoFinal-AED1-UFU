@@ -19,4 +19,5 @@ add_executable(code
         cmake-build-debug/archives/s5.txt
         cmake-build-debug/archives/s6.txt
         cmake-build-debug/archives/s7.txt
-        cmake-build-debug/archives/s8.txt)
+        cmake-build-debug/archives/s8.txt
+        cmake-build-debug/archives/s9.txt)

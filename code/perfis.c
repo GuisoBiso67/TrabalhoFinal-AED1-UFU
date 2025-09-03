@@ -137,6 +137,13 @@ void freeProfiles(Prof_Node* pn) {
     }
 }
 
+int changeInfo(Prof_Node *pn, Profile p) {
+    if (pn == NULL) return 0;
+    strcpy(pn->info.name, p.name);
+    strcpy(pn->info.age, p.age);
+    return 1;
+}
+
 void freeList(D_profiles* dp) {
     if (dp != NULL) {
         freeProfiles(dp->start);

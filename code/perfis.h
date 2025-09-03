@@ -34,6 +34,7 @@ int removeProfile(D_profiles *li, const char *name);
 Prof_Node* searchProfile(D_profiles *li, const char *name);
 void freeProfiles(Prof_Node* pn);
 void freeList(D_profiles* dp);
+int changeInfo(Prof_Node *pn, Profile p);
 
 void trim(char *str);
 
@@ -46,7 +47,7 @@ void trim(char *str);
  *
  * procurar série em determinado perfil OK;
  * procurar perfil; OK
- * alterar informações do perfil;
+ * alterar informações do perfil; OK
 */
 
 #endif //PERFIS_H

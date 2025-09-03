@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "perfis.h"
 #include "series.h"
 
@@ -23,9 +24,10 @@ int main() {
         printf("1- Adicionar Perfil\n");
         printf("2- Carregar Perfis\n");
         printf("3- Remover Perfil\n");
-        printf("4- Modificar Perfil\n"); // opção para adicionar as séries;
+        printf("4- Abrir Perfil\n"); // opção para adicionar as séries;
         printf("5- Imprimir Perfis\n");
         printf("6- Procurar Perfil\n");
+        printf("7- Alterar Perfil\n");
         printf("0- Sair\n");
         scanf("%d", &op);
         //getchar();
@@ -33,10 +35,10 @@ int main() {
             case 1:
                 printf("Nome: ");
                 scanf(" %[^\n]", p.name);
-                getchar();
                 trim(p.name);
                 printf("Idade: ");
                 scanf(" %[^\n]", p.age);
+                trim(p.age);
                 addProfile(profiles, p);
                 break;
             case 2:
@@ -61,7 +63,7 @@ int main() {
                 }
                 break;
             case 4:
-                printf("Perfil a ser modificado: ");
+                printf("Nome do Perfil: ");
                 scanf(" %[^\n]", nameAux); // função para encontrar perfil
                 trim(nameAux);
                 pnAux = searchProfile(profiles, nameAux); // pnAux recebe o nó com as informações do perfil para ser alterado;
@@ -162,6 +164,24 @@ int main() {
                 else {
                     printf("\nPerfil encontrado:\n");
                     printProfiles(profiles, pnAux);
+                }
+                break;
+            case 7:
+                printf("Perfil: ");
+                scanf(" %[^\n]", nameAux); // função para encontrar perfil
+                trim(nameAux);
+                pnAux = searchProfile(profiles, nameAux); // pnAux recebe o nó com as informações do perfil para ser alterado;
+                if (pnAux == NULL) printf("Perfil nao encontrado.\n");
+                else {
+                    printf("Nome novo: ");
+                    scanf(" %[^\n]", p.name);
+                    trim(p.name);
+                    printf("Idade nova: ");
+                    scanf(" %[^\n]", p.age);
+                    trim(p.age);
+                    const int ver5 = changeInfo(pnAux, p);
+                    if (ver5 == 0) printf("Erro na alteracao. Tente novamente.");
+                    else printf("Dados Alterados!\n");
                 }
                 break;
             case 0:
