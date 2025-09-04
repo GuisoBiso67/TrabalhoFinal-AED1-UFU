@@ -75,14 +75,18 @@ void printProfiles(D_profiles *li, Prof_Node *item) {
         return;
     }
     Prof_Node *aux = (item != NULL) ? item : li->start; // se item não for NULL, ele imprime apenas 1 perfil específico
-    if (item == NULL) printf("\n----- PERFIS ------\n\n");
+    if (item == NULL) {
+        printf("----------------- PERFIS ------------------\n");
+        printf("%-12s | %-5s | %-18s\n", "Nome", "Idade", "Series Assistidas");
+        printf("-------------------------------------------\n");
+    }
     while (aux != NULL) {
-        printf("%s | Idade: %s | Series Assistidas: %d\n", aux->info.name, aux->info.age, aux->quantTVShows);
+        printf("%-12s | %-5s | %-18d\n", aux->info.name, aux->info.age, aux->quantTVShows);
         if (item != NULL) break;
         aux = aux->next;
     }
     if (item == NULL) printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles); // imprime quantidade de perfis apenas se item for NULL (nao imprimir apenas 1 perfil);
-    printf("\n-----------------------\n");
+    printf("-------------------------------------------\n");
 }
 
 int removeProfile(D_profiles *li, const char *name) {
