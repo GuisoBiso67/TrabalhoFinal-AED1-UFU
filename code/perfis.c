@@ -87,13 +87,8 @@ void printProfiles(D_profiles *li, Prof_Node *item) {
 
 int removeProfile(D_profiles *li, const char *name) {
     if (li == NULL) return 0;
-    Prof_Node *aux = li->start;
-    while (aux != NULL) {
-        if (strcmp(aux->info.name, name) == 0) {
-            break;
-        }
-        aux = aux->next;
-    }
+    Prof_Node *aux = searchProfile(li, name); // chama o searchProfiles para procurar o perfil;
+
     if (aux == NULL) return -1; // perfil não existe;
     if (aux == li->start) { // perfil a ser removido é o primeiro
         li->start = aux->next;

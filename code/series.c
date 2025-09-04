@@ -124,15 +124,9 @@ void printFavorites(Prof_Node *pn) { // imprime apenas séries favoritas;
 int removeTVShow(Prof_Node *pn, const char *name) { // remove uma série (mesma logica do remove perfil);
     if (pn == NULL) return 0;
 
-    TVS_Node *aux = pn->start;
-    while (aux != NULL) {
-        if (strcmp(aux->info.name, name) == 0) {
-            break;
-        }
-        aux = aux->next;
-    }
-    if (aux == NULL) return -1; // serie nao esta no perfil;
+    TVS_Node *aux = searchTVShow(pn,name); // chama o searchTVShow para procurar a série;
 
+    if (aux == NULL) return -1; // serie nao esta no perfil;
     if (aux == pn->start) { // série é a primeira na lista
         pn->start = aux->next;
         pn->start->before = NULL;
