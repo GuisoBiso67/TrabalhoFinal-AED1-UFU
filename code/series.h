@@ -4,7 +4,6 @@
 //#include "perfis.h" // nao entendi muito bem porque esse include nao funciona
 typedef struct Prof_Node Prof_Node;
 
-// adicionar mais alguma informação???
 typedef struct tvShow { // nó das séries
     char name[50]; // nome;
     char broadcaster[20]; // emissora/streaming;
@@ -19,18 +18,18 @@ typedef struct tvShow { // nó das séries
 } TVShow;
 
 typedef struct TVS_Node{
-    TVShow info;
-    struct TVS_Node *next;
-    struct TVS_Node *before;
+    TVShow info; // struct com as informações
+    struct TVS_Node *next; // ponteiro para o próximo nó
+    struct TVS_Node *before; // ponteiro para o nó anterior
 } TVS_Node;
 
-int loadTVShows(Prof_Node *pn, const char *filename);
-int addTVShow(Prof_Node *pn, TVShow tvs);
-void printTVShows(Prof_Node *pn, TVS_Node *item);
-int removeTVShow(Prof_Node *pn, const char *name);
-TVS_Node* searchTVShow(Prof_Node *pn, const char *name);
-void printFavorites(Prof_Node *pn);
-void freeShows(TVS_Node *l);
+int loadTVShows(Prof_Node *pn, const char *filename); // preenche a lista de séries a partir dos arquivos;
+int addTVShow(Prof_Node *pn, TVShow tvs); // preenche um nó da lista de séries a partir dos dados que o usuario fornece;
+void printTVShows(Prof_Node *pn, TVS_Node *item); // imprime lista de séries;
+int removeTVShow(Prof_Node *pn, const char *name); // remove um nó da lista de séries (uma série, no caso);
+TVS_Node* searchTVShow(Prof_Node *pn, const char *name); // procura uma série na lista e retorna o nó dessa série
+void printFavorites(Prof_Node *pn); // imprime apenas os favoritos da lista
+void freeShows(TVS_Node *l); // libera lista de séries
 
 /* FUNÇÕES
  * adicionar série ao final do perfil; OK

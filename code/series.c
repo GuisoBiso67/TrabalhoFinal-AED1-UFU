@@ -5,6 +5,7 @@
 #include "perfis.h"
 #include "series.h"
 
+// a lógica é a mesma do addProfile;
 int addTVShow(Prof_Node *pn, TVShow tvs) {
     if (pn == NULL) return 0;
     TVS_Node *newNode = malloc(sizeof(TVS_Node));
@@ -19,6 +20,7 @@ int addTVShow(Prof_Node *pn, TVShow tvs) {
         pn->quantTVShows++;
         return 1;
     }
+    // adiciona sempre ao final da lista;
     newNode->next = NULL;
     newNode->before = pn->end;
     pn->end->next = newNode;
@@ -27,16 +29,16 @@ int addTVShow(Prof_Node *pn, TVShow tvs) {
     return 1;
 }
 
-int loadTVShows(Prof_Node *pn, const char *filename) {
+int loadTVShows(Prof_Node *pn, const char *filename) { // carrega a lista de séries a partir de um arquivo;
     if (pn == NULL) return 0;
 
     char str1[11];
     strcpy(str1, "archives/"); // melhorar isso depois
-    strcat(str1,filename);
+    strcat(str1,filename); // tem que concatenar isso porque os arquivos com as listas de séries ficam numa outra pasta;
 
     FILE* file = fopen(str1, "r");
     if (file == NULL) {
-        //printf("Erro ao abrir o arquivo");
+        //printf("Erro ao abrir o arquivo"); // essa mensagem já é impressa na main;
         return 0;
     }
 
@@ -45,11 +47,12 @@ int loadTVShows(Prof_Node *pn, const char *filename) {
     while (fgets(linha, sizeof(linha), file)) {
         linha[strcspn(linha, "\n")] = '\0';
 
+        // mesma logica do loadProfiles
         strcpy(t.name, strtok(linha, "|"));
         strcpy(t.broadcaster, strtok(NULL, "|"));
         strcpy(t.creator, strtok(NULL, "|"));
         strcpy(t.genre, strtok(NULL, "|"));
-        t.seasons = strtol(strtok(NULL, "|"),NULL,10); // tentativa que ficava dando warning
+        t.seasons = strtol(strtok(NULL, "|"),NULL,10);
         t.episodes = strtol(strtok(NULL, "|"),NULL,10);
         t.year = strtol(strtok(NULL, "|"),NULL,10);
         strcpy(t.ratingIMDB, strtok(NULL, "|"));
@@ -57,7 +60,7 @@ int loadTVShows(Prof_Node *pn, const char *filename) {
 
         char *temp = strtok(NULL, ";");
         trim(temp);
-        t.favorite = temp[0];
+        t.favorite = temp[0]; // pega apenas o primeiro caractere
 
         trim(t.name);
         trim(t.broadcaster);
@@ -103,7 +106,7 @@ void printTVShows(Prof_Node *pn, TVS_Node *item) {
     if (item == NULL) printf("\nSeries Assistidas: %d\n", pn->quantTVShows);
 }
 
-void printFavorites(Prof_Node *pn) {
+void printFavorites(Prof_Node *pn) { // imprime apenas séries favoritas;
     if (pn == NULL) return;
     int cont = 0;
     TVS_Node *aux = pn->start;
@@ -118,7 +121,7 @@ void printFavorites(Prof_Node *pn) {
     printf("\nSeries Favoritas: %d\n",cont);
 }
 
-int removeTVShow(Prof_Node *pn, const char *name) {
+int removeTVShow(Prof_Node *pn, const char *name) { // remove uma série (mesma logica do remove perfil);
     if (pn == NULL) return 0;
 
     TVS_Node *aux = pn->start;
@@ -152,7 +155,7 @@ int removeTVShow(Prof_Node *pn, const char *name) {
     return 1;
 }
 
-TVS_Node* searchTVShow(Prof_Node *pn, const char *name) {
+TVS_Node* searchTVShow(Prof_Node *pn, const char *name) { // procura uma série especifica e retorna o nó;
     if (pn == NULL) return NULL;
     TVS_Node *aux = pn->start;
     while (aux != NULL) {
@@ -173,7 +176,6 @@ void freeShows(TVS_Node *l) { // libera lista de séries
             l = l->next;
             free(aux);
         }
-        //free(l);
     }
 }
 

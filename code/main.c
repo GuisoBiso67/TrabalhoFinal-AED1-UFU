@@ -13,26 +13,18 @@ int main() {
     char nameAux[20]; // string auxiliar para nomes na chamada das funções;
     char arquiveNameAux[20]; // string auxiliar para nome de arquivos;
     Prof_Node* pnAux; // nó de perfis auxiliar;
-    char nameTVAux[50];
-    TVS_Node* tvsAux;
+    char nameTVAux[50]; // string auxiliar para nomes de séries;
+    TVS_Node* tvsAux; // nó de séries auxiliar
     TVShow tvsAuxStr; // struct auxiliar para dados de séries;
 
-    int op, op2;
+    int opP, opS; // variáveis para seleção;
 
     do {
-        printf("\n----- MENU PERFIS -----\n");
-        printf("1- Adicionar Perfil\n");
-        printf("2- Carregar Perfis\n");
-        printf("3- Remover Perfil\n");
-        printf("4- Abrir Perfil\n"); // opção para adicionar as séries;
-        printf("5- Imprimir Perfis\n");
-        printf("6- Procurar Perfil\n");
-        printf("7- Alterar Perfil\n");
-        printf("0- Sair\n");
-        scanf("%d", &op);
+        printMainMenu(); // imprime menu principal
+        scanf("%d", &opP); // pede opção
         //getchar();
-        switch (op) {
-            case 1:
+        switch (opP) {
+            case 1: // adiciona perfil novo a partir de entradas do usuário;
                 printf("Nome: ");
                 scanf(" %[^\n]", p.name);
                 trim(p.name);
@@ -41,7 +33,7 @@ int main() {
                 trim(p.age);
                 addProfile(profiles, p);
                 break;
-            case 2:
+            case 2: // carrega lista de perfis de um arquivo;
                 const int ver1 = load_profiles(profiles, "archives/profiles.txt");
                 if (ver1 == 1) {
                     printf("Perfis carregados com sucesso!\n");
@@ -49,7 +41,7 @@ int main() {
                     printf("Nao foi possivel carregar os perfis.\n");
                 }
                 break;
-            case 3:
+            case 3: // remove um perfil
                 printf("Nome do Perfil: ");
                 scanf(" %[^\n]", nameAux);
                 trim(nameAux);
@@ -62,7 +54,7 @@ int main() {
                     printf("Lista Vazia!");
                 }
                 break;
-            case 4:
+            case 4: // abre o perfil cadastrado a partir do nome;
                 printf("Nome do Perfil: ");
                 scanf(" %[^\n]", nameAux); // função para encontrar perfil
                 trim(nameAux);
@@ -72,18 +64,11 @@ int main() {
                     break;
                 }
                 do {
-                    printf("\n----- Perfil de %s -----\n", nameAux);
-                    printf("1- Adicionar Serie\n");
-                    printf("2- Carregar Series\n");
-                    printf("3- Remover Serie\n");
-                    printf("4- Imprimir Lista de Series\n");
-                    printf("5- Imprimir Favoritos\n");
-                    printf("6- Procurar Serie\n");
-                    printf("0- Sair do Perfil\n");
-                    scanf("%d", &op2);
+                    printMenuProfiles(nameAux); // imprime menu dentro de um perfil;
+                    scanf("%d", &opS); // pede opção;
                     //getchar();
-                    switch (op2) {
-                        case 1:
+                    switch (opS) {
+                        case 1: // adiciona uma série a partir de entradas do usuário;
                             printf("Nome: ");
                             scanf(" %[^\n]", tvsAuxStr.name);
                             printf("Emissora/Streaming: ");
@@ -104,9 +89,11 @@ int main() {
                             scanf("%d", &tvsAuxStr.personalRating);
                             printf("Eh uma de suas series favoritas?(y/n): ");
                             scanf(" %c", &tvsAuxStr.favorite);
-                            addTVShow(pnAux, tvsAuxStr);
+                            const int ver6 = addTVShow(pnAux, tvsAuxStr);
+                            if (ver6 == 1) printf("Serie adicionada ao perfil!\n");
+                            else printf("Serie nao foi adicionada. Tente novamente.\n");
                             break;
-                        case 2:
+                        case 2: // adiciona uma lista de séries pré-montada a partir de um arquivo;
                             printf("Selecione um arquivo (s1.txt, s_.txt, ...): ");
                             scanf(" %[^\n]", arquiveNameAux);
                             const int ver3 = loadTVShows(pnAux, arquiveNameAux); // fazer função para encontrar perfil;
@@ -116,7 +103,7 @@ int main() {
                                 printf("Erro ao ler o arquivo. Tente Novamente.\n");
                             }
                             break;
-                        case 3:
+                        case 3: // remove uma série da lista
                             printf("Nome da Serie: ");
                             scanf(" %[^\n]", nameTVAux);
                             const int ver4 = removeTVShow(pnAux, nameTVAux);
@@ -128,13 +115,13 @@ int main() {
                                 printf("Perfil Vazia!\n");
                             }
                             break;
-                        case 4:
+                        case 4: // imprime lista de séries
                             printTVShows(pnAux, NULL);
                             break;
-                        case 5:
+                        case 5: // imprime apenas séries favoritas
                             printFavorites(pnAux);
                             break;
-                        case 6:
+                        case 6: // procura uma série no perfil
                             printf("Nome da Serie: ");
                             scanf(" %[^\n]", nameTVAux);
                             tvsAux = searchTVShow(pnAux, nameTVAux);
@@ -144,19 +131,19 @@ int main() {
                                 printTVShows(pnAux, tvsAux);
                             }
                             break;
-                        case 0:
+                        case 0: // sai do perfil;
                             printf("Saindo do perfil...\n");
                             break;
                         default:
                             printf("Opcao invalida.\n");
                             break;
                     }
-                }while (op2!=0);
+                }while (opS!=0);
                 break;
-            case 5:
+            case 5: // imprime lista de perfis;
                 printProfiles(profiles, NULL);
                 break;
-            case 6:
+            case 6: // procura um perfil
                 printf("Nome: ");
                 scanf(" %[^\n]", nameAux);
                 pnAux = searchProfile(profiles,nameAux);
@@ -166,7 +153,7 @@ int main() {
                     printProfiles(profiles, pnAux);
                 }
                 break;
-            case 7:
+            case 7: // altera informações de um perfil já cadstrado;
                 printf("Perfil: ");
                 scanf(" %[^\n]", nameAux); // função para encontrar perfil
                 trim(nameAux);
@@ -184,14 +171,14 @@ int main() {
                     else printf("Dados Alterados!\n");
                 }
                 break;
-            case 0:
+            case 0: // sai do programa
                 printf("Saindo...\n");
                 break;
             default:
                 printf("Opcao invalida.\n");
                 break;
         }
-    }while (op!=0);
+    }while (opP!=0);
 
-    freeList(profiles);
+    freeList(profiles); // libera toda a memoria;
 }

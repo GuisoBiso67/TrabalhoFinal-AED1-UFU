@@ -6,6 +6,7 @@
 #include "series.h"
 
 D_profiles* createList() {
+    // aloca memória e inicializa ponteiros e variáveis
     D_profiles *li = malloc(sizeof(D_profiles));
     li->start = NULL;
     li->end = NULL;
@@ -31,6 +32,7 @@ int addProfile(D_profiles *li, Profile p){
         li->quantProfiles++;
         return 1;
     }
+    // adiciona um novo perfil sempre ao final da lista;
     newProfile->before = li->end; // before do novo nó é o fim
     newProfile->next = NULL; // next do novo nó é nul
     li->end->next = newProfile; // next do fim é o novo nó
@@ -47,15 +49,19 @@ int load_profiles(D_profiles *li, const char *filename) {
         return 0;
     }
 
+    // Lá no loadTVShows eu preciso concatenar "archives/", mas aqui não, já que eu tenho apenas uma lista de perfis;
+    // Aí eu chamo direto já com "arquives/profiles.txt" na main
+
     Profile p;
     char linha[200];
     while (fgets(linha, sizeof(linha), file)) {
         linha[strcspn(linha, "\n")] = '\0';
 
-        strcpy(p.name, strtok(linha, "|"));
-        //p.age = atoi(strtok(NULL, ";")); // tentativa que ficava dando warning
-        strcpy(p.age, strtok(NULL, ";"));
-        trim(p.name);
+        // cada linha do arquivo é assim: "NOME | IDADE;" Ex: Guilherme | 19;
+
+        strcpy(p.name, strtok(linha, "|")); // separa o nome
+        strcpy(p.age, strtok(NULL, ";")); // separa idade
+        trim(p.name); // retira espaços
         trim(p.age);
         addProfile(li, p);
     }
@@ -68,14 +74,14 @@ void printProfiles(D_profiles *li, Prof_Node *item) {
         printf("Lista Vazia!\n");
         return;
     }
-    Prof_Node *aux = (item != NULL) ? item : li->start;
+    Prof_Node *aux = (item != NULL) ? item : li->start; // se item não for NULL, ele imprime apenas 1 perfil específico
     if (item == NULL) printf("\n----- PERFIS ------\n\n");
     while (aux != NULL) {
         printf("%s | Idade: %s | Series Assistidas: %d\n", aux->info.name, aux->info.age, aux->quantTVShows);
         if (item != NULL) break;
         aux = aux->next;
     }
-    if (item == NULL) printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles);
+    if (item == NULL) printf("\n>> Perfis Cadastrados: %d\n", li->quantProfiles); // imprime quantidade de perfis apenas se item for NULL (nao imprimir apenas 1 perfil);
     printf("\n-----------------------\n");
 }
 
@@ -116,41 +122,63 @@ Prof_Node* searchProfile(D_profiles *li, const char *name) {
     Prof_Node *aux = li->start;
     while (aux != NULL) {
         if (strcmp(aux->info.name, name) == 0) {
-            break;
+            break; // se achar perfil ele para
         }
         aux = aux->next;
     }
-    if (aux == NULL) return NULL;
-    return aux;
+    if (aux == NULL) return NULL; // não achou perfil retorna um nó nulo;
+    return aux; // se achou ele retorna o nó do perfil;
 }
 
-void freeProfiles(Prof_Node* pn) {
+void freeProfiles(Prof_Node* pn) { // libera lista de perfis
     if (pn != NULL) {
         Prof_Node *aux;
         while (pn != NULL) {
             aux = pn;
             pn = pn->next;
-            freeShows(aux->start); // libera lista dos perfis;
-            free(aux);
+            freeShows(aux->start); // libera a lista de séries do perfil;
+            free(aux); // libera perfil
         }
         //free(pn);
     }
 }
 
-int changeInfo(Prof_Node *pn, Profile p) {
+int changeInfo(Prof_Node *pn, Profile p) { // altera informações de um perfil já cadastrado;
     if (pn == NULL) return 0;
     strcpy(pn->info.name, p.name);
     strcpy(pn->info.age, p.age);
     return 1;
 }
 
-void freeList(D_profiles* dp) {
+void freeList(D_profiles* dp) { // libera todas as listas (usa quando finaliza o programa);
     if (dp != NULL) {
         freeProfiles(dp->start);
     }
     free(dp);
 }
 
+void printMainMenu() {
+    printf("\n----- MENU PERFIS -----\n");
+    printf("1- Adicionar Perfil\n");
+    printf("2- Carregar Perfis\n");
+    printf("3- Remover Perfil\n");
+    printf("4- Abrir Perfil\n"); // opção para adicionar as séries;
+    printf("5- Imprimir Perfis\n");
+    printf("6- Procurar Perfil\n");
+    printf("7- Alterar Perfil\n");
+    printf("0- Sair\n");
+}
+
+void printMenuProfiles(const char *name) {
+    printf("\n----- Perfil de %s -----\n", name);
+    printf("1- Adicionar Serie\n");
+    printf("2- Carregar Series\n");
+    printf("3- Remover Serie\n");
+    printf("4- Imprimir Lista de Series\n");
+    printf("5- Imprimir Favoritos\n");
+    printf("6- Procurar Serie\n");
+    printf("0- Sair do Perfil\n");
+}
 
 // FUNÇÃO QUE NAO TEM QUE MEXER
 void trim(char *str) {
