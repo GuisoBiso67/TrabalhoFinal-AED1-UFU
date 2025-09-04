@@ -157,19 +157,19 @@ void freeList(D_profiles* dp) { // libera todas as listas (usa quando finaliza o
     free(dp);
 }
 
-void printMainMenu() {
+void printMainMenu() { // opções explicadas na main
     printf("\n----- MENU PERFIS -----\n");
     printf("1- Adicionar Perfil\n");
     printf("2- Carregar Perfis\n");
     printf("3- Remover Perfil\n");
-    printf("4- Abrir Perfil\n"); // opção para adicionar as séries;
+    printf("4- Abrir Perfil\n");
     printf("5- Imprimir Perfis\n");
     printf("6- Procurar Perfil\n");
     printf("7- Alterar Perfil\n");
     printf("0- Sair\n");
 }
 
-void printMenuProfiles(const char *name) {
+void printMenuProfiles(const char *name) { // opções explicadas na main
     printf("\n----- Perfil de %s -----\n", name);
     printf("1- Adicionar Serie\n");
     printf("2- Carregar Series\n");
@@ -177,6 +177,8 @@ void printMenuProfiles(const char *name) {
     printf("4- Imprimir Lista de Series\n");
     printf("5- Imprimir Favoritos\n");
     printf("6- Procurar Serie\n");
+    printf("7- Adicionar Favorito\n");
+    printf("8- Remover Favorito\n");
     printf("0- Sair do Perfil\n");
 }
 

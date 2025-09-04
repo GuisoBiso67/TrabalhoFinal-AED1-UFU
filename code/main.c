@@ -131,6 +131,22 @@ int main() {
                                 printTVShows(pnAux, tvsAux);
                             }
                             break;
+                        case 7: // adiciona uma série aos favoritos;
+                            printf("Nome da Serie: ");
+                            scanf(" %[^\n]", nameTVAux);
+                            const int ver8 = favoriteTVShow(pnAux, nameTVAux);
+                            if (ver8 == 1) printf("Serie adicionada aos favoritos!\n");
+                            else if (ver8 == -1) printf("Serie ja estava nos favoritos!\n");
+                            else printf("Serie nao foi encontrada.\n");
+                            break;
+                        case 8: // remove uma série dos favoritos;
+                            printf("Nome da Serie: ");
+                            scanf(" %[^\n]", nameTVAux);
+                            const int ver7 = unfavoriteTVShow(pnAux, nameTVAux);
+                            if (ver7 == 1) printf("Serie removida dos favoritos!\n");
+                            else if (ver7 == -1) printf("Serie já estava fora dos favoritos!\n");
+                            else printf("Serie nao foi encontrada.\n");
+                            break;
                         case 0: // sai do perfil;
                             printf("Saindo do perfil...\n");
                             break;

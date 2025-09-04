@@ -168,6 +168,44 @@ TVS_Node* searchTVShow(Prof_Node *pn, const char *name) { // procura uma série 
     return aux; // retorna o nó
 }
 
+int unfavoriteTVShow(Prof_Node *pn, const char *name) {
+    if (pn == NULL) return 0;
+
+    TVS_Node *aux = pn->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            if (aux->info.favorite == 'Y' || aux->info.favorite == 'y') {
+                aux->info.favorite = 'N'; // remove o status de favorito
+                return 1;
+            }
+            else {
+                return -1; // já não era favorito;
+            }
+        }
+        aux = aux->next;
+    }
+    return 0; // não encontrada;
+}
+
+int favoriteTVShow(Prof_Node *pn, const char *name) {
+    if (pn == NULL) return 0;
+
+    TVS_Node *aux = pn->start;
+    while (aux != NULL) {
+        if (strcmp(aux->info.name, name) == 0) {
+            if (aux->info.favorite == 'N' || aux->info.favorite == 'n') {
+                aux->info.favorite = 'Y'; // remove o status de favorito
+                return 1;
+            }
+            else {
+                return -1; // ja era favorito;
+            }
+        }
+        aux = aux->next;
+    }
+    return 0; // não encontrada;
+}
+
 void freeShows(TVS_Node *l) { // libera lista de séries
     if (l != NULL) {
         TVS_Node *aux;

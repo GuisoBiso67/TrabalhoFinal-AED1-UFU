@@ -28,7 +28,9 @@ int addTVShow(Prof_Node *pn, TVShow tvs); // preenche um nó da lista de séries
 void printTVShows(Prof_Node *pn, TVS_Node *item); // imprime lista de séries;
 int removeTVShow(Prof_Node *pn, const char *name); // remove um nó da lista de séries (uma série, no caso);
 TVS_Node* searchTVShow(Prof_Node *pn, const char *name); // procura uma série na lista e retorna o nó dessa série
-void printFavorites(Prof_Node *pn); // imprime apenas os favoritos da lista
+void printFavorites(Prof_Node *pn); // imprime apenas os favoritos da lista;
+int unfavoriteTVShow(Prof_Node *pn, const char *name); // tira uma série dos favoritos;
+int favoriteTVShow(Prof_Node *pn, const char *name); // adiciona uma série aos favoritos;
 void freeShows(TVS_Node *l); // libera lista de séries
 
 /* FUNÇÕES
