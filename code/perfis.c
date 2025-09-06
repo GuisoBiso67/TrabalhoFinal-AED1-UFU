@@ -164,8 +164,9 @@ void printMainMenu() { // opções explicadas na main
     printf("4- Abrir Perfil\n");
     printf("5- Imprimir Perfis\n");
     printf("6- Procurar Perfil\n");
-    printf("7- Alterar Perfil\n");
+    printf("7- Alterar Dados de um Perfil\n");
     printf("0- Sair\n");
+    printf("Selecione uma opcao: ");
 }
 
 void printMenuProfiles(const char *name) { // opções explicadas na main
@@ -179,6 +180,7 @@ void printMenuProfiles(const char *name) { // opções explicadas na main
     printf("7- Adicionar Favorito\n");
     printf("8- Remover Favorito\n");
     printf("0- Sair do Perfil\n");
+    printf("Selecione uma opcao: ");
 }
 
 // FUNÇÃO QUE NAO TEM QUE MEXER
