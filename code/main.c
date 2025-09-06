@@ -31,7 +31,9 @@ int main() {
                 printf("Idade: ");
                 scanf(" %[^\n]", p.age);
                 trim(p.age);
-                addProfile(profiles, p);
+                const int ver9 = addProfile(profiles, p);
+                if (ver9 == 1) printf("Perfil adicionado!\n");
+                else printf("Perfil nao foi adicionado. Tente novamente.\n");
                 break;
             case 2: // carrega lista de perfis de um arquivo;
                 const int ver1 = load_profiles(profiles, "archives/profiles.txt");

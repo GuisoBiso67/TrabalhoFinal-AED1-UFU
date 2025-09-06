@@ -5,7 +5,7 @@
 
 typedef struct profile { // struct com os dados do perfil;
     char name[20];
-    char age[3];
+    char age[5];
 } Profile;
 
 typedef struct Prof_Node{ // descritor dos de séries e nó dos perfis;
