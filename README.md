@@ -1,7 +1,6 @@
 # TrabalhoFinal-AED1-UFU
 # 📺 Sistema de Gerenciamento de Séries — Lista Duplamente Ligada
 
-<<<<<<< HEAD
 > Trabalho Final da disciplina de **Algoritmos e Estruturas de Dados 1 (AED1)** — Universidade Federal de Uberlândia (UFU).  
 > Sistema de gerenciamento de perfis de usuários e seus históricos de séries assistidas, implementado em **C** utilizando **Listas Duplamente Ligadas aninhadas**.
 
@@ -256,8 +255,3 @@ A lista duplamente ligada foi preferida pois:
 <div align="center">
   <i>Desenvolvido para a disciplina de Algoritmos e Estruturas de Dados 1 — UFU, Uberlândia/MG</i>
 </div>
-=======
-Proposta: Fazer um lista duplamente ligada com os perfis dos usuários e cada usuário tem uma lista duplamente ligada com as series que ele já assistiu;
-
-Autores: Gabriela Andrade Martins Cunha e Guilherme Silva Cotrim
->>>>>>> 8dd16c457ae655a67c39143697073c68916a9d0e
