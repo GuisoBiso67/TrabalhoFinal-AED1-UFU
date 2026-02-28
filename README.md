@@ -53,25 +53,30 @@ Lista de Usuários (Duplamente Ligada)
                      └── ...
 ```
 
-### Nó de Usuário
+### Nó de Perfil
 
 ```c
-typedef struct usuario {
-    // dados do perfil (nome, id, etc.)
-    struct serie   *listaSeries;   // ponteiro para a lista de séries
-    struct usuario *ant;           // ponteiro para o usuário anterior
-    struct usuario *prox;          // ponteiro para o próximo usuário
-} Usuario;
+typedef struct Prof_Node{ // nó de perfil;
+    // dados do perfil
+    Profile info;
+    TVS_Node *start; // acessa o primeiro nó da lista de séries;
+    TVS_Node *end; // acessa o último nó da lista de séries;
+    int quantTVShows; // quantidade de séries no perfil do usuário;
+
+    Prof_Node *next; // ponteiro para o próximo nó;
+    Prof_Node *before; // ponteiro para o nó anterior;
+} Prof_Node;
 ```
 
 ### Nó de Série
 
 ```c
-typedef struct serie {
+typedef struct TVS_Node { // nó de "tv show"
     // dados da série (título, gênero, nota, etc.)
-    struct serie *ant;   // ponteiro para a série anterior
-    struct serie *prox;  // ponteiro para a próxima série
-} Serie;
+    TVShow info; // struct com as informações
+    struct TVS_Node *next; // ponteiro para o próximo nó
+    struct TVS_Node *before; // ponteiro para o nó anterior
+} TVS_Node;
 ```
 
 ### Por que Lista Duplamente Ligada?
@@ -129,10 +134,10 @@ TrabalhoFinal-AED1-UFU/
 │
 ├── code/                   # Código-fonte do projeto
 │   ├── main.c              # Ponto de entrada e menu principal
-│   ├── usuario.c           # Implementação das funções de usuário
-│   ├── usuario.h           # Definição da struct e assinaturas de usuário
-│   ├── serie.c             # Implementação das funções de série
-│   ├── serie.h             # Definição da struct e assinaturas de série
+│   ├── perfis.c           # Implementação das funções de usuário
+│   ├── perfis.h           # Definição da struct e assinaturas de usuário
+│   ├── series.c             # Implementação das funções de série
+│   ├── series.h             # Definição da struct e assinaturas de série
 │   └── CMakeLists.txt      # Configuração de build com CMake
 │
 ├── report/                 # Relatório do trabalho
@@ -157,7 +162,7 @@ git clone https://github.com/GuisoBiso67/TrabalhoFinal-AED1-UFU.git
 cd TrabalhoFinal-AED1-UFU/code
 
 # Compile todos os arquivos
-gcc main.c usuario.c serie.c -o sistema_series
+gcc main.c perfis.c series.c -o sistema_series
 
 # Execute
 ./sistema_series
@@ -241,14 +246,6 @@ A lista duplamente ligada foi preferida pois:
     </td>
   </tr>
 </table>
-
----
-
-## 📚 Referências
-
-- Cormen, T. H. et al. **Algoritmos: Teoria e Prática**. 3ª ed. Elsevier, 2012.
-- Ziviani, N. **Projeto de Algoritmos com Implementações em C e Pascal**. 3ª ed. Cengage Learning, 2010.
-- Material didático da disciplina AED1 — UFU.
 
 ---
 
